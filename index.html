@@ -92,7 +92,13 @@ nav button.active{color:#e7bf61}
 }
 </style>
 </head>
-
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+ <script>
+window.partyDB = window.supabase.createClient(
+  'https://ikfywejmyqkqhwvrxkgo.supabase.co',
+  'sb_publishable_11MZJrjYGmhLsoMDg6nvPg_vAzjfBI-'
+);
+ </script>
 <body>
 
 <header>
