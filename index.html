@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -6,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#101010">
 <title>PARTY | دنیای بازی و گفتگو</title>
+
 <style>
 *{box-sizing:border-box}
 body{
@@ -28,16 +28,13 @@ main{padding:18px;max-width:650px;margin:auto}
 h2{font-size:19px;margin:25px 0 12px}
 .welcome{
  background:linear-gradient(130deg,#392b12,#191919 65%);
- border:1px solid #71551f;border-radius:18px;
- padding:22px
+ border:1px solid #71551f;border-radius:18px;padding:22px
 }
 .welcome h1{font-size:23px;color:#e7bf61;margin:0 0 10px}
 .muted{color:#aaa;font-size:13px;line-height:1.9}
 .section{display:none}
 .section.active{display:block}
-.grid{
- display:grid;grid-template-columns:1fr 1fr;gap:12px
-}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .item{
  background:#1c1c1c;border:1px solid #383027;
  padding:17px 12px;border-radius:15px;
@@ -84,9 +81,18 @@ nav button.active{color:#e7bf61}
  padding:13px;color:#d9bd7c;font-size:12px;
  line-height:1.9;margin-top:15px
 }
-.back{background:none;border:0;color:#e7bf61;font:inherit;padding:12px 0;cursor:pointer}
+.back{
+ background:none;border:0;color:#e7bf61;
+ font:inherit;padding:12px 0;cursor:pointer
+}
+.message{
+ background:#252525;border:1px solid #393027;
+ border-radius:12px;padding:12px;margin:8px 0;
+ line-height:1.8;overflow-wrap:anywhere
+}
 </style>
 </head>
+
 <body>
 
 <header>
@@ -95,119 +101,118 @@ nav button.active{color:#e7bf61}
 </header>
 
 <main>
- <section id="home" class="section active">
-  <div class="welcome">
-   <h1>خوش اومدی به PARTY!</h1>
-   <div class="muted">اینجا قراره بازی کنیم، دوست پیدا کنیم و کنار هم خوش بگذرونیم.</div>
-  </div>
 
-  <h2>از کجا شروع کنیم؟</h2>
-  <div class="grid">
-   <button class="item" onclick="show('games')">
-    <span class="emoji">🎮</span><b>بازی‌ها</b>
-    <small>بریم بازی کنیم</small>
-   </button>
-   <button class="item" onclick="show('chats')">
-    <span class="emoji">💬</span><b>گفتگوها</b>
-    <small>چنل‌ها و گروه‌ها</small>
-   </button>
-   <button class="item" onclick="show('friends')">
-    <span class="emoji">👥</span><b>دوستان</b>
-    <small>ارتباط با دوستان</small>
-   </button>
-   <button class="item" onclick="show('profile')">
-    <span class="emoji">👤</span><b>پروفایل من</b>
-    <small>حساب کاربری</small>
-   </button>
-  </div>
+<section id="home" class="section active">
+ <div class="welcome">
+  <h1>خوش اومدی به PARTY!</h1>
+  <div class="muted">اینجا قراره بازی کنیم، دوست پیدا کنیم و کنار هم خوش بگذرونیم.</div>
+ </div>
 
-  <h2>دنیای PARTY</h2>
-  <div class="notice">با دوستانت بازی کن، در چنل‌ها گفتگو کن و جامعه خودت رو بساز.</div>
- </section>
+ <h2>از کجا شروع کنیم؟</h2>
+ <div class="grid">
+  <button class="item" onclick="show('games')">
+   <span class="emoji">🎮</span><b>بازی‌ها</b>
+   <small>بریم بازی کنیم</small>
+  </button>
+  <button class="item" onclick="show('chats')">
+   <span class="emoji">💬</span><b>گفتگوها</b>
+   <small>چنل‌ها و گروه‌ها</small>
+  </button>
+  <button class="item" onclick="show('friends')">
+   <span class="emoji">👥</span><b>دوستان</b>
+   <small>ارتباط با دوستان</small>
+  </button>
+  <button class="item" onclick="show('profile')">
+   <span class="emoji">👤</span><b>پروفایل من</b>
+   <small>حساب کاربری</small>
+  </button>
+ </div>
 
- <section id="games" class="section">
-  <h2>🎮 دنیای بازی‌ها</h2>
-  <p class="muted">بازی مورد علاقه‌ات رو انتخاب کن.</p>
-  <div class="grid">
-   <button class="item" onclick="demo('بیلیارد')"><span class="emoji">🎱</span><b>بیلیارد</b></button>
-   <button class="item" onclick="demo('شطرنج')"><span class="emoji">♟️</span><b>شطرنج</b></button>
-   <button class="item" onclick="demo('منچ')"><span class="emoji">🎲</span><b>منچ</b></button>
-   <button class="item" onclick="demo('تخته نرد')"><span class="emoji">🎯</span><b>تخته نرد</b></button>
-   <button class="item" onclick="demo('حکم')"><span class="emoji">🃏</span><b>حکم</b></button>
-   <button class="item" onclick="demo('چهاربرگ')"><span class="emoji">🎴</span><b>چهاربرگ</b></button>
-  </div>
- </section>
+ <h2>دنیای PARTY</h2>
+ <div class="notice">با دوستانت بازی کن، در چنل‌ها گفتگو کن و جامعه خودت رو بساز.</div>
+</section>
 
+<section id="games" class="section">
+ <h2>🎮 دنیای بازی‌ها</h2>
+ <p class="muted">بازی مورد علاقه‌ات رو انتخاب کن.</p>
+ <div class="grid">
+  <button class="item" onclick="demo('بیلیارد')"><span class="emoji">🎱</span><b>بیلیارد</b></button>
+  <button class="item" onclick="demo('شطرنج')"><span class="emoji">♟️</span><b>شطرنج</b></button>
+  <button class="item" onclick="demo('منچ')"><span class="emoji">🎲</span><b>منچ</b></button>
+  <button class="item" onclick="demo('تخته نرد')"><span class="emoji">🎯</span><b>تخته نرد</b></button>
+  <button class="item" onclick="demo('حکم')"><span class="emoji">🃏</span><b>حکم</b></button>
+  <button class="item" onclick="demo('چهاربرگ')"><span class="emoji">🎴</span><b>چهاربرگ</b></button>
+ </div>
+</section>
+
+<!-- مرکز گفتگوها -->
 <section id="chats" class="section">
-  <h2>💬 مرکز گفتگوهای PARTY</h2>
-  <p class="muted">چنل بساز یا یک گروه دوستانه راه بنداز!</p>
+ <h2>💬 مرکز گفتگوهای PARTY</h2>
+ <p class="muted">می‌تونی چنل یا گروه بسازی؛ این دو کاملاً مستقل از هم هستن.</p>
 
-  <div class="grid">
-    <button class="item" onclick="createChannel()">
-      <span class="emoji">📢</span>
-      <b>ساخت چنل</b>
-      <small>اطلاع‌رسانی و انتشار پیام</small>
-    </button>
-    <button class="item" onclick="createGroup()">
-      <span class="emoji">👥</span>
-      <b>ساخت گروه</b>
-      <small>گفتگوی آزاد با اعضا</small>
-    </button>
-  </div>
+ <div class="grid">
+  <button class="item" onclick="createChannel()">
+   <span class="emoji">📢</span>
+   <b>ساخت چنل جدید</b>
+   <small>انتشار پیام و اطلاع‌رسانی</small>
+  </button>
 
-  <h2>📢 چنل‌های من</h2>
-  <div id="channelList">
-    <p class="muted">هنوز چنلی نساختی.</p>
-  </div>
+  <button class="item" onclick="createGroup()">
+   <span class="emoji">👥</span>
+   <b>ساخت گروه جدید</b>
+   <small>گفتگوی آزاد با اعضا</small>
+  </button>
+ </div>
 
-  <h2>👥 گروه‌های من</h2>
-  <div id="groupList">
-    <p class="muted">هنوز گروهی نساختی.</p>
-  </div>
+ <div class="notice">⭐ در نسخه فعلی ساخت چنل و گروه رایگان است.</div>
+
+ <h2>📢 چنل‌های من</h2>
+ <div id="channelList">
+  <p class="muted">هنوز چنلی نساختی.</p>
+ </div>
+
+ <h2>👥 گروه‌های من</h2>
+ <div id="groupList">
+  <p class="muted">هنوز گروهی نساختی.</p>
+ </div>
 </section>
 
+<!-- جزئیات چنل: فقط یک بار تعریف شده -->
 <section id="channelDetail" class="section">
-  <button class="back" onclick="show('chats')">← بازگشت</button>
-  <h2 id="channelTitle">چنل</h2>
-  <p id="channelId" class="muted"></p>
-  <div id="channelSections"></div>
-  <button class="primary" onclick="addSection()">＋ افزودن بخش</button>
-  <div class="notice">در چنل فقط صاحب و مدیران اجازه ارسال پیام دارند.</div>
+ <button class="back" onclick="show('chats')">← بازگشت به گفتگوها</button>
+ <h2 id="channelTitle">چنل من</h2>
+ <p id="channelId" class="muted"></p>
+ <div id="channelSections"></div>
+ <button class="primary" onclick="addSection()">＋ افزودن بخش</button>
+ <div class="notice">در چنل فقط صاحب و مدیران اجازه ارسال پیام دارند. بازی‌ها در بخش جداگانه بازی‌ها قرار دارند.</div>
 </section>
 
+<!-- جزئیات گروه -->
 <section id="groupDetail" class="section">
-  <button class="back" onclick="show('chats')">← بازگشت</button>
-  <h2 id="groupTitle">گروه</h2>
-  <p class="muted">گفتگوی آزاد اعضا</p>
-  <div id="groupMessages" class="notice">گروه ساخته شد! اینجا محل گفتگوی اعضاست.</div>
-  <input id="messageInput" placeholder="پیامت رو بنویس...">
-  <button class="primary" onclick="sendMessage()">ارسال پیام</button>
+ <button class="back" onclick="show('chats')">← بازگشت به گفتگوها</button>
+ <h2 id="groupTitle">گروه من</h2>
+ <p id="groupType" class="muted"></p>
+ <div id="groupMessages"></div>
+ <input id="messageInput" placeholder="پیامت رو بنویس..." maxlength="1000">
+ <button class="primary" onclick="sendMessage()">ارسال پیام</button>
 </section>
 
- <section id="friends" class="section">
-  <h2>👥 دوستان</h2>
-  <p class="muted">اینجا می‌تونی دوستانت رو پیدا کنی و باهاشون ارتباط بگیری.</p>
-  <div class="notice">امکان جستجو و افزودن دوستان در نسخه‌های بعدی فعال می‌شه.</div>
- </section>
+<section id="friends" class="section">
+ <h2>👥 دوستان</h2>
+ <p class="muted">اینجا می‌تونی دوستانت رو پیدا کنی و باهاشون ارتباط بگیری.</p>
+ <div class="notice">امکان جستجو و افزودن دوستان در نسخه‌های بعدی فعال می‌شه.</div>
+</section>
 
- <section id="profile" class="section">
-  <h2>👤 پروفایل من</h2>
-  <div class="welcome">
-   <div class="avatar">👤</div>
-   <h2>بازیکن PARTY</h2>
-   <p class="muted">به دنیای PARTY خوش اومدی!</p>
-  </div>
-  <div class="notice">پروفایل، عکس، نام کاربری و آمار بازی‌ها در مراحل بعدی تکمیل می‌شن.</div>
- </section>
+<section id="profile" class="section">
+ <h2>👤 پروفایل من</h2>
+ <div class="welcome">
+  <div class="avatar">👤</div>
+  <h2>بازیکن PARTY</h2>
+  <p class="muted">به دنیای PARTY خوش اومدی!</p>
+ </div>
+ <div class="notice">پروفایل، عکس، نام کاربری و آمار بازی‌ها در مراحل بعدی تکمیل می‌شن.</div>
+</section>
 
- <section id="channelDetail" class="section">
-  <button class="back" onclick="show('chats')">← بازگشت به گفتگوها</button>
-  <h2 id="channelTitle">چنل من</h2>
-  <p class="muted">فضای گفتگو و ارتباط اعضای چنل</p>
-  <div id="channelSections"></div>
-  <button class="primary" onclick="addSection()">＋ افزودن بخش گفتگو</button>
-  <div class="notice">بازی‌ها در بخش جداگانه بازی‌ها قرار دارند و داخل چنل ساخته نمی‌شوند.</div>
- </section>
 </main>
 
 <nav>
@@ -219,76 +224,78 @@ nav button.active{color:#e7bf61}
 </nav>
 
 <script>
+// نمایش بخش‌های مختلف برنامه
 function show(id,btn){
- document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
- document.getElementById(id).classList.add('active');
+ document.querySelectorAll('.section').forEach(s=>{
+  s.classList.remove('active');
+ });
+
+ const target=document.getElementById(id);
+ if(target) target.classList.add('active');
+
  if(btn){
-  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b=>{
+   b.classList.remove('active');
+  });
   btn.classList.add('active');
  }
 }
+
 function demo(name){
  alert('بخش '+name+' به‌زودی در PARTY ساخته می‌شود!');
 }
-function createChannel(){
- 
+
+// بارگذاری اطلاعات ذخیره‌شده
+function loadData(key){
+ try{
+  return JSON.parse(localStorage.getItem(key)||'[]');
+ }catch(e){
+  return [];
+ }
+}
+
+let channels=loadData('partyChannels');
+let groups=loadData('partyGroups');
+let currentChannel=-1;
+let currentGroup=-1;
+
+// ذخیره اطلاعات
 function saveData(){
  localStorage.setItem('partyChannels',JSON.stringify(channels));
  localStorage.setItem('partyGroups',JSON.stringify(groups));
 }
 
-let channels=JSON.parse(localStorage.getItem('partyChannels')||'[]');
-let groups=JSON.parse(localStorage.getItem('partyGroups')||'[]');
-let currentGroup=-1;
-
-function drawLists(){
- let c=document.getElementById('channelList');
- let g=document.getElementById('groupList');
- c.innerHTML='';
- g.innerHTML='';
-
- if(!channels.length)c.textContent='هنوز چنلی نساختی.';
- if(!groups.length)g.textContent='هنوز گروهی نساختی.';
-
- channels.forEach((item,i)=>{
-  let b=document.createElement('button');
-  b.className='item';
-  b.style.marginBottom='10px';
-  b.textContent='📢 '+item.name+'  ·  '+item.id;
-  b.onclick=()=>openChannel(i);
-  c.appendChild(b);
- });
-
- groups.forEach((item,i)=>{
-  let b=document.createElement('button');
-  b.className='item';
-  b.style.marginBottom='10px';
-  b.textContent='👥 '+item.name+' · '+item.type;
-  b.onclick=()=>openGroup(i);
-  g.appendChild(b);
- });
-}
-
+// ساخت چنل مستقل
 function createChannel(){
- let name=prompt('نام چنل:');
- if(!name || !name.trim())return;
+ let name=prompt('نام چنل رو وارد کن:');
+ if(!name || !name.trim()) return;
 
- let type=prompt('نوع چنل را بنویس: public یا private');
- if(!type)return;
+ let type=prompt('نوع چنل رو بنویس:\npublic = عمومی\nprivate = خصوصی');
+ if(!type) return;
+
  type=type.toLowerCase().trim();
+
  if(type!=='public' && type!=='private'){
-  alert('نوع چنل باید public یا private باشد.');
+  alert('نوع چنل باید public یا private باشه.');
   return;
  }
 
- let id='';
+ let id='خصوصی';
+
  if(type==='public'){
-  id=prompt('شناسه عمومی حداقل ۵ کاراکتری:');
+  id=prompt('شناسه عمومی حداقل ۵ کاراکتری وارد کن:');
   if(!id || id.trim().length<5){
-   alert('شناسه باید حداقل ۵ کاراکتر باشد.');
+   alert('شناسه باید حداقل ۵ کاراکتر داشته باشه.');
    return;
   }
+
   id=id.trim().toUpperCase();
+
+  if(!/^[A-Z0-9]+$/.test(id)){
+   alert('شناسه فقط می‌تونه شامل حروف انگلیسی و عدد باشه.');
+   return;
+  }
+
   if(channels.some(c=>c.id===id)){
    alert('این شناسه قبلاً در این مرورگر استفاده شده.');
    return;
@@ -296,93 +303,183 @@ function createChannel(){
  }
 
  channels.push({
-  name:name.trim(),id:id||'خصوصی',type:type,
+  name:name.trim(),
+  id:id,
+  type:type,
   sections:['گفتگوی عمومی','اخبار و اطلاعیه‌ها','عکس‌ها و ویدیوها']
  });
+
  saveData();
  drawLists();
- alert('چنل ساخته شد!');
+ alert('چنل با موفقیت ساخته شد!');
 }
 
+// ساخت گروه مستقل
 function createGroup(){
- let name=prompt('نام گروه:');
- if(!name || !name.trim())return;
+ let name=prompt('نام گروه رو وارد کن:');
+ if(!name || !name.trim()) return;
 
- let type=prompt('نوع گروه: public یا private');
- if(!type)return;
+ let type=prompt('نوع گروه رو بنویس:\npublic = عمومی\nprivate = خصوصی');
+ if(!type) return;
+
  type=type.toLowerCase().trim();
+
  if(type!=='public' && type!=='private'){
-  alert('نوع گروه باید public یا private باشد.');
+  alert('نوع گروه باید public یا private باشه.');
   return;
  }
 
- groups.push({name:name.trim(),type:type,messages:[]});
+ groups.push({
+  name:name.trim(),
+  type:type,
+  messages:[]
+ });
+
  saveData();
  drawLists();
- alert('گروه ساخته شد!');
+ alert('گروه با موفقیت ساخته شد!');
 }
 
+// نمایش فهرست چنل‌ها و گروه‌ها
+function drawLists(){
+ const c=document.getElementById('channelList');
+ const g=document.getElementById('groupList');
+
+ c.innerHTML='';
+ g.innerHTML='';
+
+ if(channels.length===0){
+  c.innerHTML='<p class="muted">هنوز چنلی نساختی.</p>';
+ }
+
+ if(groups.length===0){
+  g.innerHTML='<p class="muted">هنوز گروهی نساختی.</p>';
+ }
+
+ channels.forEach((item,i)=>{
+  const b=document.createElement('button');
+  b.className='item';
+  b.style.marginBottom='10px';
+  b.innerHTML='<span class="emoji">📢</span>';
+  const title=document.createElement('b');
+  title.textContent=item.name;
+  const info=document.createElement('small');
+  info.textContent='شناسه: '+item.id+' | '+(item.type==='public'?'عمومی':'خصوصی');
+  b.appendChild(title);
+  b.appendChild(info);
+  b.onclick=()=>openChannel(i);
+  c.appendChild(b);
+ });
+
+ groups.forEach((item,i)=>{
+  const b=document.createElement('button');
+  b.className='item';
+  b.style.marginBottom='10px';
+  b.innerHTML='<span class="emoji">👥</span>';
+  const title=document.createElement('b');
+  title.textContent=item.name;
+  const info=document.createElement('small');
+  info.textContent=item.type==='public'?'گروه عمومی':'گروه خصوصی';
+  b.appendChild(title);
+  b.appendChild(info);
+  b.onclick=()=>openGroup(i);
+  g.appendChild(b);
+ });
+}
+
+// باز کردن چنل
 function openChannel(i){
- let item=channels[i];
+ currentChannel=i;
+ const item=channels[i];
+
  document.getElementById('channelTitle').textContent=item.name;
  document.getElementById('channelId').textContent=
-  'شناسه: '+item.id+' | '+item.type;
- let area=document.getElementById('channelSections');
+  'شناسه: '+item.id+' | '+(item.type==='public'?'عمومی':'خصوصی');
+
+ drawChannelSections();
+ show('channelDetail');
+}
+
+// نمایش بخش‌های چنل
+function drawChannelSections(){
+ const area=document.getElementById('channelSections');
  area.innerHTML='';
- item.sections.forEach(name=>{
-  let div=document.createElement('div');
+
+ if(currentChannel<0 || !channels[currentChannel]) return;
+
+ channels[currentChannel].sections.forEach(name=>{
+  const div=document.createElement('div');
   div.className='channel';
   div.textContent='💬 '+name;
   area.appendChild(div);
  });
- show('channelDetail');
 }
 
+// افزودن بخش به چنل
 function addSection(){
- let name=prompt('نام بخش جدید:');
- if(!name || !name.trim())return;
- let title=document.getElementById('channelTitle').textContent;
- let i=channels.findIndex(c=>c.name===title);
- if(i<0)return;
- channels[i].sections.push(name.trim());
+ if(currentChannel<0) return;
+
+ const name=prompt('نام بخش جدید رو وارد کن:');
+ if(!name || !name.trim()) return;
+
+ channels[currentChannel].sections.push(name.trim());
  saveData();
- openChannel(i);
+ drawChannelSections();
 }
 
+// باز کردن گروه
 function openGroup(i){
  currentGroup=i;
- document.getElementById('groupTitle').textContent=groups[i].name;
+ const item=groups[i];
+
+ document.getElementById('groupTitle').textContent=item.name;
+ document.getElementById('groupType').textContent=
+  item.type==='public'?'گروه عمومی':'گروه خصوصی';
+
+ document.getElementById('messageInput').value='';
  drawMessages();
  show('groupDetail');
 }
 
+// نمایش پیام‌های گروه
 function drawMessages(){
- let area=document.getElementById('groupMessages');
+ const area=document.getElementById('groupMessages');
  area.innerHTML='';
- let messages=groups[currentGroup].messages;
+
+ if(currentGroup<0 || !groups[currentGroup]) return;
+
+ const messages=groups[currentGroup].messages;
+
  if(!messages.length){
-  area.textContent='هنوز پیامی ارسال نشده.';
+  area.innerHTML='<p class="muted">هنوز پیامی ارسال نشده. اولین پیام رو تو بفرست!</p>';
   return;
  }
+
  messages.forEach(msg=>{
-  let div=document.createElement('div');
-  div.style.padding='8px';
+  const div=document.createElement('div');
+  div.className='message';
   div.textContent=msg;
   area.appendChild(div);
  });
 }
 
+// ارسال پیام در گروه
 function sendMessage(){
- let input=document.getElementById('messageInput');
- let value=input.value.trim();
- if(!value || currentGroup<0)return;
+ const input=document.getElementById('messageInput');
+ const value=input.value.trim();
+
+ if(!value || currentGroup<0) return;
+
  groups[currentGroup].messages.push(value);
  input.value='';
+
  saveData();
  drawMessages();
 }
 
+// اجرای اولیه
 drawLists();
 </script>
+
 </body>
-</html>
+                              </html>
