@@ -3,49 +3,228 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080808">
-<title>PARTY</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101010">
+<title>PARTY | دنیای بازی و گفتگو</title>
 <style>
 *{box-sizing:border-box}
 body{
-  margin:0;min-height:100vh;
-  background:radial-gradient(circle at top,#29200d,#080808 55%);
-  color:#fff;font-family:Tahoma,Arial,sans-serif;
-  display:flex;align-items:center;justify-content:center;
-  padding:24px
+ margin:0;background:#101010;color:#fff;
+ font-family:Tahoma,Arial,sans-serif;
+ padding-bottom:85px
 }
-.card{
-  width:100%;max-width:390px;text-align:center;
-  padding:35px 24px;border:1px solid #80621e;
-  border-radius:25px;background:#101010;
-  box-shadow:0 15px 55px #000
+header{
+ padding:20px;background:#171717;
+ border-bottom:1px solid #40331b;
+ display:flex;justify-content:space-between;align-items:center
 }
-.logo{font-size:42px;font-weight:900;letter-spacing:5px;color:#e6bd57}
-.sub{color:#aaa;margin:10px 0 30px}
+.logo{font-size:27px;font-weight:900;color:#e5bb55;letter-spacing:3px}
+.avatar{
+ width:42px;height:42px;border-radius:50%;
+ background:#332918;border:1px solid #b28a36;
+ display:grid;place-items:center;font-size:20px
+}
+main{padding:18px;max-width:650px;margin:auto}
+h2{font-size:19px;margin:25px 0 12px}
+.welcome{
+ background:linear-gradient(130deg,#392b12,#191919 65%);
+ border:1px solid #71551f;border-radius:18px;
+ padding:22px
+}
+.welcome h1{font-size:23px;color:#e7bf61;margin:0 0 10px}
+.muted{color:#aaa;font-size:13px;line-height:1.9}
+.section{display:none}
+.section.active{display:block}
+.grid{
+ display:grid;grid-template-columns:1fr 1fr;gap:12px
+}
+.item{
+ background:#1c1c1c;border:1px solid #383027;
+ padding:17px 12px;border-radius:15px;
+ cursor:pointer;text-align:right;color:white;
+ width:100%;font-family:inherit
+}
+.item:active{background:#302719}
+.emoji{font-size:27px;display:block;margin-bottom:10px}
+.item b{font-size:14px}
+.item small{display:block;color:#999;margin-top:7px}
+.channel{
+ background:#1d1d1d;border:1px solid #383027;
+ border-radius:13px;padding:15px;margin-bottom:10px;
+ display:flex;align-items:center;gap:12px
+}
+.channel .emoji{margin:0}
+.gold{color:#e7bf61}
+button.primary{
+ border:0;border-radius:12px;padding:13px 18px;
+ background:#d8b253;color:#17120a;font-weight:bold;
+ font-family:inherit;cursor:pointer
+}
 input{
-  width:100%;padding:15px;margin:9px 0;
-  border:1px solid #51411f;border-radius:12px;
-  background:#191919;color:white;font-size:15px
+ width:100%;padding:14px;background:#202020;
+ border:1px solid #514326;border-radius:10px;
+ color:white;margin:8px 0;font-family:inherit
 }
-button{
-  width:100%;padding:15px;margin-top:16px;
-  border:0;border-radius:12px;background:#d6ad49;
-  color:#111;font-size:17px;font-weight:bold
+nav{
+ position:fixed;bottom:0;left:0;right:0;
+ background:#191919;border-top:1px solid #514326;
+ display:flex;justify-content:space-around;
+ padding:10px 2px max(10px,env(safe-area-inset-bottom));
+ z-index:5
 }
-.note{font-size:12px;color:#888;margin-top:22px}
+nav button{
+ background:none;border:0;color:#999;
+ font-family:inherit;font-size:11px;cursor:pointer;
+ display:flex;flex-direction:column;align-items:center;gap:5px
+}
+nav button span{font-size:21px}
+nav button.active{color:#e7bf61}
+.notice{
+ background:#252015;border-radius:12px;
+ padding:13px;color:#d9bd7c;font-size:12px;
+ line-height:1.9;margin-top:15px
+}
+.back{background:none;border:0;color:#e7bf61;font:inherit;padding:12px 0;cursor:pointer}
 </style>
 </head>
 <body>
-<main class="card">
-  <div class="logo">PARTY</div>
-  <p class="sub">بازی کن، دوست پیدا کن، لذت ببر!</p>
-  <input type="text" placeholder="نام کاربری یا ایمیل">
-  <input type="password" placeholder="رمز عبور">
-  <button onclick="alert('به‌زودی ورود واقعی فعال می‌شود!')">
-    ورود به PARTY
-  </button>
-  <p class="note">به دنیای بازی‌های گروهی خوش آمدی</p>
+
+<header>
+ <div class="logo">PARTY</div>
+ <div class="avatar">👤</div>
+</header>
+
+<main>
+ <section id="home" class="section active">
+  <div class="welcome">
+   <h1>خوش اومدی به PARTY!</h1>
+   <div class="muted">اینجا قراره بازی کنیم، دوست پیدا کنیم و کنار هم خوش بگذرونیم.</div>
+  </div>
+
+  <h2>از کجا شروع کنیم؟</h2>
+  <div class="grid">
+   <button class="item" onclick="show('games')">
+    <span class="emoji">🎮</span><b>بازی‌ها</b>
+    <small>بریم بازی کنیم</small>
+   </button>
+   <button class="item" onclick="show('chats')">
+    <span class="emoji">💬</span><b>گفتگوها</b>
+    <small>چنل‌ها و گروه‌ها</small>
+   </button>
+   <button class="item" onclick="show('friends')">
+    <span class="emoji">👥</span><b>دوستان</b>
+    <small>ارتباط با دوستان</small>
+   </button>
+   <button class="item" onclick="show('profile')">
+    <span class="emoji">👤</span><b>پروفایل من</b>
+    <small>حساب کاربری</small>
+   </button>
+  </div>
+
+  <h2>دنیای PARTY</h2>
+  <div class="notice">با دوستانت بازی کن، در چنل‌ها گفتگو کن و جامعه خودت رو بساز.</div>
+ </section>
+
+ <section id="games" class="section">
+  <h2>🎮 دنیای بازی‌ها</h2>
+  <p class="muted">بازی مورد علاقه‌ات رو انتخاب کن.</p>
+  <div class="grid">
+   <button class="item" onclick="demo('بیلیارد')"><span class="emoji">🎱</span><b>بیلیارد</b></button>
+   <button class="item" onclick="demo('شطرنج')"><span class="emoji">♟️</span><b>شطرنج</b></button>
+   <button class="item" onclick="demo('منچ')"><span class="emoji">🎲</span><b>منچ</b></button>
+   <button class="item" onclick="demo('تخته نرد')"><span class="emoji">🎯</span><b>تخته نرد</b></button>
+   <button class="item" onclick="demo('حکم')"><span class="emoji">🃏</span><b>حکم</b></button>
+   <button class="item" onclick="demo('چهاربرگ')"><span class="emoji">🎴</span><b>چهاربرگ</b></button>
+  </div>
+ </section>
+
+ <section id="chats" class="section">
+  <h2>💬 گفتگوها</h2>
+  <p class="muted">چنل‌ها و گروه‌های گفتگوی مورد علاقه‌ات.</p>
+  <button class="primary" onclick="createChannel()">＋ ساخت چنل جدید</button>
+  <div class="notice">⭐ در نسخه فعلی ساخت چنل و عضویت کاملاً رایگان است.</div>
+  <h2>چنل‌های من</h2>
+  <div id="channelList">
+   <p class="muted">هنوز چنلی نساختی. اولین چنل خودت رو بساز!</p>
+  </div>
+ </section>
+
+ <section id="friends" class="section">
+  <h2>👥 دوستان</h2>
+  <p class="muted">اینجا می‌تونی دوستانت رو پیدا کنی و باهاشون ارتباط بگیری.</p>
+  <div class="notice">امکان جستجو و افزودن دوستان در نسخه‌های بعدی فعال می‌شه.</div>
+ </section>
+
+ <section id="profile" class="section">
+  <h2>👤 پروفایل من</h2>
+  <div class="welcome">
+   <div class="avatar">👤</div>
+   <h2>بازیکن PARTY</h2>
+   <p class="muted">به دنیای PARTY خوش اومدی!</p>
+  </div>
+  <div class="notice">پروفایل، عکس، نام کاربری و آمار بازی‌ها در مراحل بعدی تکمیل می‌شن.</div>
+ </section>
+
+ <section id="channelDetail" class="section">
+  <button class="back" onclick="show('chats')">← بازگشت به گفتگوها</button>
+  <h2 id="channelTitle">چنل من</h2>
+  <p class="muted">فضای گفتگو و ارتباط اعضای چنل</p>
+  <div id="channelSections"></div>
+  <button class="primary" onclick="addSection()">＋ افزودن بخش گفتگو</button>
+  <div class="notice">بازی‌ها در بخش جداگانه بازی‌ها قرار دارند و داخل چنل ساخته نمی‌شوند.</div>
+ </section>
 </main>
+
+<nav>
+ <button class="active" onclick="show('home',this)"><span>⌂</span>خانه</button>
+ <button onclick="show('games',this)"><span>🎮</span>بازی‌ها</button>
+ <button onclick="show('chats',this)"><span>💬</span>گفتگوها</button>
+ <button onclick="show('friends',this)"><span>👥</span>دوستان</button>
+ <button onclick="show('profile',this)"><span>👤</span>پروفایل</button>
+</nav>
+
+<script>
+function show(id,btn){
+ document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ if(btn){
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+ }
+}
+function demo(name){
+ alert('بخش '+name+' به‌زودی در PARTY ساخته می‌شود!');
+}
+function createChannel(){
+ let name=prompt('اسم چنل جدیدت رو بنویس:');
+ if(!name || !name.trim())return;
+ let div=document.createElement('div');
+ div.className='channel';
+ let icon=document.createElement('span');
+ icon.className='emoji';icon.textContent='💬';
+ let title=document.createElement('b');
+ title.textContent=name.trim();
+ div.append(icon,title);
+ div.onclick=()=>openChannel(name.trim());
+ document.getElementById('channelList').appendChild(div);
+ document.getElementById('channelList').querySelector('p')?.remove();
+}
+function openChannel(name){
+ document.getElementById('channelTitle').textContent=name;
+ document.getElementById('channelSections').innerHTML='';
+ ['گفتگوی عمومی','اخبار و اطلاعیه‌ها','عکس‌ها و ویدیوها'].forEach(addSectionRow);
+ show('channelDetail');
+}
+function addSectionRow(name){
+ let div=document.createElement('div');
+ div.className='channel';
+ div.textContent='💬  '+name;
+ document.getElementById('channelSections').appendChild(div);
+}
+function addSection(){
+ let name=prompt('اسم بخش گفتگوی جدید:');
+ if(name && name.trim())addSectionRow(name.trim());
+}
+</script>
 </body>
 </html>
