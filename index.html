@@ -138,16 +138,51 @@ nav button.active{color:#e7bf61}
   </div>
  </section>
 
- <section id="chats" class="section">
-  <h2>💬 گفتگوها</h2>
-  <p class="muted">چنل‌ها و گروه‌های گفتگوی مورد علاقه‌ات.</p>
-  <button class="primary" onclick="createChannel()">＋ ساخت چنل جدید</button>
-  <div class="notice">⭐ در نسخه فعلی ساخت چنل و عضویت کاملاً رایگان است.</div>
-  <h2>چنل‌های من</h2>
-  <div id="channelList">
-   <p class="muted">هنوز چنلی نساختی. اولین چنل خودت رو بساز!</p>
+<section id="chats" class="section">
+  <h2>💬 مرکز گفتگوهای PARTY</h2>
+  <p class="muted">چنل بساز یا یک گروه دوستانه راه بنداز!</p>
+
+  <div class="grid">
+    <button class="item" onclick="createChannel()">
+      <span class="emoji">📢</span>
+      <b>ساخت چنل</b>
+      <small>اطلاع‌رسانی و انتشار پیام</small>
+    </button>
+    <button class="item" onclick="createGroup()">
+      <span class="emoji">👥</span>
+      <b>ساخت گروه</b>
+      <small>گفتگوی آزاد با اعضا</small>
+    </button>
   </div>
- </section>
+
+  <h2>📢 چنل‌های من</h2>
+  <div id="channelList">
+    <p class="muted">هنوز چنلی نساختی.</p>
+  </div>
+
+  <h2>👥 گروه‌های من</h2>
+  <div id="groupList">
+    <p class="muted">هنوز گروهی نساختی.</p>
+  </div>
+</section>
+
+<section id="channelDetail" class="section">
+  <button class="back" onclick="show('chats')">← بازگشت</button>
+  <h2 id="channelTitle">چنل</h2>
+  <p id="channelId" class="muted"></p>
+  <div id="channelSections"></div>
+  <button class="primary" onclick="addSection()">＋ افزودن بخش</button>
+  <div class="notice">در چنل فقط صاحب و مدیران اجازه ارسال پیام دارند.</div>
+</section>
+
+<section id="groupDetail" class="section">
+  <button class="back" onclick="show('chats')">← بازگشت</button>
+  <h2 id="groupTitle">گروه</h2>
+  <p class="muted">گفتگوی آزاد اعضا</p>
+  <div id="groupMessages" class="notice">گروه ساخته شد! اینجا محل گفتگوی اعضاست.</div>
+  <input id="messageInput" placeholder="پیامت رو بنویس...">
+  <button class="primary" onclick="sendMessage()">ارسال پیام</button>
+</section>
 
  <section id="friends" class="section">
   <h2>👥 دوستان</h2>
@@ -196,35 +231,158 @@ function demo(name){
  alert('بخش '+name+' به‌زودی در PARTY ساخته می‌شود!');
 }
 function createChannel(){
- let name=prompt('اسم چنل جدیدت رو بنویس:');
- if(!name || !name.trim())return;
- let div=document.createElement('div');
- div.className='channel';
- let icon=document.createElement('span');
- icon.className='emoji';icon.textContent='💬';
- let title=document.createElement('b');
- title.textContent=name.trim();
- div.append(icon,title);
- div.onclick=()=>openChannel(name.trim());
- document.getElementById('channelList').appendChild(div);
- document.getElementById('channelList').querySelector('p')?.remove();
+ 
+function saveData(){
+ localStorage.setItem('partyChannels',JSON.stringify(channels));
+ localStorage.setItem('partyGroups',JSON.stringify(groups));
 }
-function openChannel(name){
- document.getElementById('channelTitle').textContent=name;
- document.getElementById('channelSections').innerHTML='';
- ['گفتگوی عمومی','اخبار و اطلاعیه‌ها','عکس‌ها و ویدیوها'].forEach(addSectionRow);
+
+let channels=JSON.parse(localStorage.getItem('partyChannels')||'[]');
+let groups=JSON.parse(localStorage.getItem('partyGroups')||'[]');
+let currentGroup=-1;
+
+function drawLists(){
+ let c=document.getElementById('channelList');
+ let g=document.getElementById('groupList');
+ c.innerHTML='';
+ g.innerHTML='';
+
+ if(!channels.length)c.textContent='هنوز چنلی نساختی.';
+ if(!groups.length)g.textContent='هنوز گروهی نساختی.';
+
+ channels.forEach((item,i)=>{
+  let b=document.createElement('button');
+  b.className='item';
+  b.style.marginBottom='10px';
+  b.textContent='📢 '+item.name+'  ·  '+item.id;
+  b.onclick=()=>openChannel(i);
+  c.appendChild(b);
+ });
+
+ groups.forEach((item,i)=>{
+  let b=document.createElement('button');
+  b.className='item';
+  b.style.marginBottom='10px';
+  b.textContent='👥 '+item.name+' · '+item.type;
+  b.onclick=()=>openGroup(i);
+  g.appendChild(b);
+ });
+}
+
+function createChannel(){
+ let name=prompt('نام چنل:');
+ if(!name || !name.trim())return;
+
+ let type=prompt('نوع چنل را بنویس: public یا private');
+ if(!type)return;
+ type=type.toLowerCase().trim();
+ if(type!=='public' && type!=='private'){
+  alert('نوع چنل باید public یا private باشد.');
+  return;
+ }
+
+ let id='';
+ if(type==='public'){
+  id=prompt('شناسه عمومی حداقل ۵ کاراکتری:');
+  if(!id || id.trim().length<5){
+   alert('شناسه باید حداقل ۵ کاراکتر باشد.');
+   return;
+  }
+  id=id.trim().toUpperCase();
+  if(channels.some(c=>c.id===id)){
+   alert('این شناسه قبلاً در این مرورگر استفاده شده.');
+   return;
+  }
+ }
+
+ channels.push({
+  name:name.trim(),id:id||'خصوصی',type:type,
+  sections:['گفتگوی عمومی','اخبار و اطلاعیه‌ها','عکس‌ها و ویدیوها']
+ });
+ saveData();
+ drawLists();
+ alert('چنل ساخته شد!');
+}
+
+function createGroup(){
+ let name=prompt('نام گروه:');
+ if(!name || !name.trim())return;
+
+ let type=prompt('نوع گروه: public یا private');
+ if(!type)return;
+ type=type.toLowerCase().trim();
+ if(type!=='public' && type!=='private'){
+  alert('نوع گروه باید public یا private باشد.');
+  return;
+ }
+
+ groups.push({name:name.trim(),type:type,messages:[]});
+ saveData();
+ drawLists();
+ alert('گروه ساخته شد!');
+}
+
+function openChannel(i){
+ let item=channels[i];
+ document.getElementById('channelTitle').textContent=item.name;
+ document.getElementById('channelId').textContent=
+  'شناسه: '+item.id+' | '+item.type;
+ let area=document.getElementById('channelSections');
+ area.innerHTML='';
+ item.sections.forEach(name=>{
+  let div=document.createElement('div');
+  div.className='channel';
+  div.textContent='💬 '+name;
+  area.appendChild(div);
+ });
  show('channelDetail');
 }
-function addSectionRow(name){
- let div=document.createElement('div');
- div.className='channel';
- div.textContent='💬  '+name;
- document.getElementById('channelSections').appendChild(div);
-}
+
 function addSection(){
- let name=prompt('اسم بخش گفتگوی جدید:');
- if(name && name.trim())addSectionRow(name.trim());
+ let name=prompt('نام بخش جدید:');
+ if(!name || !name.trim())return;
+ let title=document.getElementById('channelTitle').textContent;
+ let i=channels.findIndex(c=>c.name===title);
+ if(i<0)return;
+ channels[i].sections.push(name.trim());
+ saveData();
+ openChannel(i);
 }
+
+function openGroup(i){
+ currentGroup=i;
+ document.getElementById('groupTitle').textContent=groups[i].name;
+ drawMessages();
+ show('groupDetail');
+}
+
+function drawMessages(){
+ let area=document.getElementById('groupMessages');
+ area.innerHTML='';
+ let messages=groups[currentGroup].messages;
+ if(!messages.length){
+  area.textContent='هنوز پیامی ارسال نشده.';
+  return;
+ }
+ messages.forEach(msg=>{
+  let div=document.createElement('div');
+  div.style.padding='8px';
+  div.textContent=msg;
+  area.appendChild(div);
+ });
+}
+
+function sendMessage(){
+ let input=document.getElementById('messageInput');
+ let value=input.value.trim();
+ if(!value || currentGroup<0)return;
+ groups[currentGroup].messages.push(value);
+ input.value='';
+ saveData();
+ drawMessages();
+}
+
+drawLists();
 </script>
 </body>
 </html>
